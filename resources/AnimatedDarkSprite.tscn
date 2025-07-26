@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://r0xqasnqyw06"]
+
+[ext_resource type="Script" uid="uid://brl5chc13skum" path="res://scripts/AnimatedDarkSprite.cs" id="1_lqn4h"]
+[ext_resource type="Shader" uid="uid://d18v641fc4u6b" path="res://shaders/smooth_filter.gdshader" id="2_8w6xe"]
+[ext_resource type="Shader" uid="uid://uug8a8ek42wt" path="res://shaders/hide_in_light.gdshader" id="3_lqn4h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6lgk"]
+shader = ExtResource("2_8w6xe")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_34wqj"]
+shader = ExtResource("3_lqn4h")
+
+[node name="AnimatedDarkSprite" type="Node2D"]
+script = ExtResource("1_lqn4h")
+
+[node name="DarkSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_k6lgk")
+
+[node name="LightSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_34wqj")

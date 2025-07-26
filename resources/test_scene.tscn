@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr4l75i6l5i2j"]
+
+[ext_resource type="Script" uid="uid://bjhpyqi5i4w2l" path="res://resources/TestScene.cs" id="1_ia1sn"]
+[ext_resource type="PackedScene" uid="uid://bqo0blmyvv671" path="res://resources/character.tscn" id="1_s5vy6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ia1sn"]
+size = Vector2(405, 92)
+
+[sub_resource type="Gradient" id="Gradient_tnmrp"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4m1k4"]
+gradient = SubResource("Gradient_tnmrp")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ia1sn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 77.0
+offset_top = 198.0
+offset_right = 481.0
+offset_bottom = 291.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(279, 244)
+shape = SubResource("RectangleShape2D_ia1sn")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(170, 179)
+texture = SubResource("GradientTexture2D_4m1k4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(159, 176)
+zoom = Vector2(5, 5)
+
+[node name="Character" parent="." instance=ExtResource("1_s5vy6")]
+position = Vector2(126, 190)
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

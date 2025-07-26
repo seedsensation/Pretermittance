@@ -1,0 +1,96 @@
+[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://chxxsv880fgs7"]
+
+[ext_resource type="Texture2D" uid="uid://cyvlnsu6hv2uy" path="res://sprites/Character.png" id="1_argpy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04byk"]
+atlas = ExtResource("1_argpy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqvxw"]
+atlas = ExtResource("1_argpy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxtwl"]
+atlas = ExtResource("1_argpy")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suoyk"]
+atlas = ExtResource("1_argpy")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1t7v"]
+atlas = ExtResource("1_argpy")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvh8g"]
+atlas = ExtResource("1_argpy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdrai"]
+atlas = ExtResource("1_argpy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5lat"]
+atlas = ExtResource("1_argpy")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4q4s"]
+atlas = ExtResource("1_argpy")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imak5"]
+atlas = ExtResource("1_argpy")
+region = Rect2(0, 48, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04byk")
+}],
+"loop": true,
+"name": &"DarkIdle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqvxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxtwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_suoyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1t7v")
+}],
+"loop": true,
+"name": &"DarkWalking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvh8g")
+}],
+"loop": true,
+"name": &"LightIdle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdrai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5lat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4q4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imak5")
+}],
+"loop": true,
+"name": &"LightWalking",
+"speed": 5.0
+}]

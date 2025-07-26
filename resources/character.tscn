@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqo0blmyvv671"]
+
+[ext_resource type="PackedScene" uid="uid://r0xqasnqyw06" path="res://resources/AnimatedDarkSprite.tscn" id="1_7yexr"]
+[ext_resource type="Script" uid="uid://dwqdx4ivkya27" path="res://scripts/Character.cs" id="1_d36d2"]
+[ext_resource type="SpriteFrames" uid="uid://chxxsv880fgs7" path="res://resources/player_sprite_frames.tres" id="2_d36d2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7yexr"]
+radius = 7.0
+height = 18.0
+
+[node name="Character" type="CharacterBody2D"]
+script = ExtResource("1_d36d2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7yexr")
+
+[node name="Sprite" parent="." instance=ExtResource("1_7yexr")]
+Frames = ExtResource("2_d36d2")

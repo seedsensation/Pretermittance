@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnij4lqiig5wy"]
-
-[ext_resource type="Script" uid="uid://b40rnqcxdv21m" path="res://scripts/DarkSprite.cs" id="1_7u8cp"]
-
-[node name="DarkSprite" type="Node2D"]
-script = ExtResource("1_7u8cp")
