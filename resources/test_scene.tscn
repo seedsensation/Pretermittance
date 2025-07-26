@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dr4l75i6l5i2j"]
+[gd_scene load_steps=20 format=3 uid="uid://dr4l75i6l5i2j"]
 
 [ext_resource type="Script" uid="uid://bjhpyqi5i4w2l" path="res://resources/TestScene.cs" id="1_ia1sn"]
 [ext_resource type="PackedScene" uid="uid://bqo0blmyvv671" path="res://resources/character.tscn" id="1_s5vy6"]
+[ext_resource type="PackedScene" uid="uid://c1twfuypqhq2a" path="res://resources/layered_sprite.tscn" id="3_cq5rb"]
+[ext_resource type="Texture2D" uid="uid://odbke0uggcm8" path="res://sprites/zenith.png" id="4_a6bpt"]
+[ext_resource type="Script" uid="uid://b40rnqcxdv21m" path="res://scripts/DarkSprite.cs" id="5_kswyj"]
+[ext_resource type="Shader" uid="uid://d18v641fc4u6b" path="res://shaders/smooth_filter.gdshader" id="6_tnmrp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ia1sn"]
 size = Vector2(405, 92)
@@ -14,6 +18,41 @@ gradient = SubResource("Gradient_tnmrp")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m1k4"]
+atlas = ExtResource("4_a6bpt")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mr01g"]
+shader = ExtResource("6_tnmrp")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbnx0"]
+atlas = ExtResource("4_a6bpt")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vjcem"]
+shader = ExtResource("6_tnmrp")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa6p8"]
+atlas = ExtResource("4_a6bpt")
+region = Rect2(128, 0, 64, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rfir1"]
+shader = ExtResource("6_tnmrp")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85g7w"]
+atlas = ExtResource("4_a6bpt")
+region = Rect2(192, 0, 64, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_48rlh"]
+shader = ExtResource("6_tnmrp")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uyk4"]
+atlas = ExtResource("4_a6bpt")
+region = Rect2(256, 0, 64, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_st4hx"]
+shader = ExtResource("6_tnmrp")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ia1sn")
@@ -34,11 +73,94 @@ shape = SubResource("RectangleShape2D_ia1sn")
 position = Vector2(170, 179)
 texture = SubResource("GradientTexture2D_4m1k4")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(159, 176)
+[node name="Character" parent="." instance=ExtResource("1_s5vy6")]
+texture_filter = 2
+position = Vector2(126, 190)
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+position = Vector2(33, -14)
 zoom = Vector2(5, 5)
 
-[node name="Character" parent="." instance=ExtResource("1_s5vy6")]
-position = Vector2(126, 190)
+[node name="layered_sprite" parent="." instance=ExtResource("3_cq5rb")]
+position = Vector2(289, 98)
+LayerCount = 5
+LayerHeight = 0.001
+Distance = 0.105
+DarkAtlas = ExtResource("4_a6bpt")
+
+[node name="Layer1" type="CanvasLayer" parent="layered_sprite"]
+scale = Vector2(9.52381, 9.52381)
+transform = Transform2D(9.52381, 0, 0, 9.52381, 0, 0)
+follow_viewport_enabled = true
+follow_viewport_scale = 0.105
+
+[node name="LayerSprite" type="Node2D" parent="layered_sprite/Layer1"]
+script = ExtResource("5_kswyj")
+DarkTexture = SubResource("AtlasTexture_4m1k4")
+
+[node name="DarkSprite" type="Sprite2D" parent="layered_sprite/Layer1/LayerSprite"]
+material = SubResource("ShaderMaterial_mr01g")
+position = Vector2(73, -21.557)
+texture = SubResource("AtlasTexture_4m1k4")
+
+[node name="Layer2" type="CanvasLayer" parent="layered_sprite"]
+scale = Vector2(9.52381, 9.52381)
+transform = Transform2D(9.52381, 0, 0, 9.52381, 0, 0)
+follow_viewport_enabled = true
+follow_viewport_scale = 0.106
+
+[node name="LayerSprite" type="Node2D" parent="layered_sprite/Layer2"]
+script = ExtResource("5_kswyj")
+DarkTexture = SubResource("AtlasTexture_hbnx0")
+
+[node name="DarkSprite" type="Sprite2D" parent="layered_sprite/Layer2/LayerSprite"]
+material = SubResource("ShaderMaterial_vjcem")
+position = Vector2(73, -21.557)
+texture = SubResource("AtlasTexture_hbnx0")
+
+[node name="Layer3" type="CanvasLayer" parent="layered_sprite"]
+scale = Vector2(9.52381, 9.52381)
+transform = Transform2D(9.52381, 0, 0, 9.52381, 0, 0)
+follow_viewport_enabled = true
+follow_viewport_scale = 0.107
+
+[node name="LayerSprite" type="Node2D" parent="layered_sprite/Layer3"]
+script = ExtResource("5_kswyj")
+DarkTexture = SubResource("AtlasTexture_aa6p8")
+
+[node name="DarkSprite" type="Sprite2D" parent="layered_sprite/Layer3/LayerSprite"]
+material = SubResource("ShaderMaterial_rfir1")
+position = Vector2(73, -21.557)
+texture = SubResource("AtlasTexture_aa6p8")
+
+[node name="Layer4" type="CanvasLayer" parent="layered_sprite"]
+scale = Vector2(9.52381, 9.52381)
+transform = Transform2D(9.52381, 0, 0, 9.52381, 0, 0)
+follow_viewport_enabled = true
+follow_viewport_scale = 0.108
+
+[node name="LayerSprite" type="Node2D" parent="layered_sprite/Layer4"]
+script = ExtResource("5_kswyj")
+DarkTexture = SubResource("AtlasTexture_85g7w")
+
+[node name="DarkSprite" type="Sprite2D" parent="layered_sprite/Layer4/LayerSprite"]
+material = SubResource("ShaderMaterial_48rlh")
+position = Vector2(73, -21.557)
+texture = SubResource("AtlasTexture_85g7w")
+
+[node name="Layer5" type="CanvasLayer" parent="layered_sprite"]
+scale = Vector2(9.52381, 9.52381)
+transform = Transform2D(9.52381, 0, 0, 9.52381, 0, 0)
+follow_viewport_enabled = true
+follow_viewport_scale = 0.109
+
+[node name="LayerSprite" type="Node2D" parent="layered_sprite/Layer5"]
+script = ExtResource("5_kswyj")
+DarkTexture = SubResource("AtlasTexture_6uyk4")
+
+[node name="DarkSprite" type="Sprite2D" parent="layered_sprite/Layer5/LayerSprite"]
+material = SubResource("ShaderMaterial_st4hx")
+position = Vector2(73, -21.557)
+texture = SubResource("AtlasTexture_6uyk4")
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
